@@ -1,0 +1,13 @@
+input {
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+  
+  * {
+    /* background-image: url(" "); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Cairo', sans-serif;
+  }
+  
+  
