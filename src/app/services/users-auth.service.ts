@@ -12,5 +12,10 @@ export class UsersAuthService {
     // return this.http.post<Users>("http://localhost:3000/api/register", newUser)
     console.log({ newUser })
   }
+
+  getAllUser(){
+    return this.http.get<Users[]>("http://localhost:3000/api/users")
+
+  }
   constructor(private http: HttpClient, private Router: Router) { }
 }

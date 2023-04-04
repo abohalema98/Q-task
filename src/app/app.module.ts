@@ -1,19 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig , FacebookLoginProvider, GoogleSigninButtonModule} from '@abacritt/angularx-social-login';
+import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig, FacebookLoginProvider, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
-import {MatPaginatorModule} from '@angular/material/paginator';
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTableModule } from '@angular/material/table';
+import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DecimalPipe } from '@angular/common';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,13 +32,11 @@ import { DataviewComponent } from './dataview/dataview.component';
     GoogleSigninButtonModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatTableModule,
-    MatPaginatorModule
+    NgbAlertModule,
+    NgbModule,
+    DecimalPipe,
+    NgbPaginationModule
+
   ],
   providers: [
     {
@@ -67,6 +59,7 @@ import { DataviewComponent } from './dataview/dataview.component';
       } as SocialAuthServiceConfig,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

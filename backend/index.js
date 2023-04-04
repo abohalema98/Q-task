@@ -4,7 +4,8 @@ const app = express();
 const cors = require("cors");
 const body_parser = require("body-parser");
 const Users = require('./models/Users')
-const UserRoter = require("./Controllar/userController")
+const UserControllar = require("./Controllar/userController")
+const UserRouter = require("./router/UserRoter")
 
 // CORS-enabled
 app.use(cors());
@@ -20,7 +21,9 @@ app.use((req, res, next) => {
 });
 
 // Routing
-app.use("/api", UserRoter)
+app.use("/api", UserControllar)
+app.use("/api", UserRouter)
+
 
 
 // Error Handling
