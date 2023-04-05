@@ -24,9 +24,6 @@ const Users = db.define("users", {
   phoneNumber: {
     type: DataTypes.STRING(20),
     allowNull: false,
-    validate: {
-      is: /^(\+[0-9]{1,3})?[0-9]{10}$/ // pattern for 10-digit phone number with optional country code
-    },
     notEmpty: true
 
   },
@@ -41,9 +38,8 @@ const Users = db.define("users", {
   Password: {
     type: DataTypes.STRING,
     allowNull: false,
-    notEmpty: true
-
   },
+  
 });
 
 Users.sync()

@@ -3,11 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DataviewComponent } from './dataview/dataview.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth-guard/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'dataViwe', component: DataviewComponent },
+  { path: 'dataView', component: DataviewComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
 ];
 

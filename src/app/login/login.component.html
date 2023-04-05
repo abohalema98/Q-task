@@ -1,48 +1,52 @@
-<section>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          <form lang="ar" dir="rtl">
-            <!--  Email Row -->
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="email"
-                    placeholder="example@email.com"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <!--  Email Row -->
-            <!--  Password Row -->
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    placeholder="ادخل كلمة المرور"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <!--  Password Row -->
-            <div class="row">
-              <div class="col-12 mb-3">
-                <button type="submit" class="btn btn-success mt-4">
-                  تسجيل الدخول
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+<div class="container">
+  <form
+    lang="ar"
+    dir="rtl"
+    [formGroup]="LoginForm"
+    (ngSubmit)="onLogin()"
+    >
+    <p class="text-body text-center">تســجيل الدخول</p>
+    <div class="row">
+      <div class="form-group">
+        <input
+          formControlName="Email"
+          type="text"
+          class="form-control"
+          name="Email"
+          placeholder="example@email.com"
+          required
+        />
       </div>
     </div>
-  </section>
-  
+
+    <div class="row">
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          placeholder="ادخل كلمة المرور"
+          required
+          formControlName="Password"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group text-center mt-3">
+        <button type="submit" class="btn btn-outline-success btn-sm">
+          تسجيل الدخول
+        </button>
+      </div>
+    </div>
+    <hr />
+    <div class="form-group text-center">
+      <button
+        type="button"
+        class="btn btn-outline-danger btn-sm"
+        (click)="onGoogleLogin()"
+      >
+        Log in with Google
+      </button>
+    </div>
+  </form>
+</div>

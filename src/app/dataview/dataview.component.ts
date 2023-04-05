@@ -1,9 +1,9 @@
 import { Component, PipeTransform } from '@angular/core';
-import { UsersAuthService } from '../services/users-auth.service';
 import { Users } from '../models/users';
-import { AsyncPipe, DecimalPipe, NgFor } from '@angular/common';
-import { FormControl, FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
+import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
+import { AuthService } from '../shared/services/auth.service';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class DataviewComponent {
   filter = new FormControl('', { nonNullable: true });
 
 
-  constructor(private AuthService: UsersAuthService, pipe: DecimalPipe) {
+  constructor(private AuthService: AuthService, pipe: DecimalPipe) {
     this.users = this.filter.valueChanges.pipe(
       startWith(''),
       map((text) => this.search(text, pipe)),

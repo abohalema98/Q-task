@@ -1,11 +1,10 @@
 
-import { Component, OnInit } from '@angular/core';
-import { SocialAuthService, GoogleLoginProvider } from '@abacritt/angularx-social-login';
-import { SocialUser } from "@abacritt/angularx-social-login";
-import { UsersAuthService } from '../services/users-auth.service';
-import { Users } from '../models/users';
-import { from, switchMap } from 'rxjs';
-
+import { Component } from '@angular/core';
+import { AuthService } from '../shared/services/auth.service';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FacebookLoginProvider, SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,31 +12,63 @@ import { from, switchMap } from 'rxjs';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
-  
+
+  privacyPolicyUrl!: string;
   user!: SocialUser;
   loggedIn!: boolean;
+  signUpForm!: FormGroup;
 
-  signInWithGoogle() {
-    return from(this.authService.signIn(GoogleLoginProvider.PROVIDER_ID));
+  onSignUp() {
+    if (this.signUpForm.invalid) {
+      return
+    }
+    this.authService.registerUser(this.signUpForm.value).subscribe(d => {
+      console.log(d)
+      this.router.navigate(['dataView']);
 
+    }, err => {
+      alert(err.error)
+    }
+    )
+  }
+
+  constructor(
+    private authService: AuthService,
+    private SocialAuthService: SocialAuthService,
+    private location: Location,
+    private router: Router) {
+    ;
 
   }
 
-  login() {
-    this.signInWithGoogle().pipe(
-      switchMap(() => this.authService.authState)
-    ).subscribe(user => {
-      console.log(user);
-
-    })
+  GoogleAuthSignUp() {
+    return this.authService.GoogleAuth()
   }
-  constructor(private authService: SocialAuthService, private UserService: UsersAuthService) { }
 
   ngOnInit(): void {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      console.log(user);
+    this.signUpForm = new FormGroup(
+      {
+        'firstName': new FormControl('', [Validators.required, Validators.minLength(4)]),
+        'lastName': new FormControl('', [Validators.required, Validators.minLength(4)]),
+        'Email': new FormControl('', [Validators.required, Validators.email]),
+        'phoneNumber': new FormControl('', [Validators.required]),
+        'Password': new FormControl('', [Validators.required]),
+        'confirm_password': new FormControl('', [Validators.required]),
 
-    });
+      }
+    ),
+      this.SocialAuthService.authState.subscribe((user) => {
+        this.user = user;
+        this.loggedIn = (user != null);
+      });
+  }
+
+  // fb 
+  async signInWithFB() {
+    await this.SocialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.SocialAuthService.signOut();
   }
 }
