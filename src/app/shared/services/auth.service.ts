@@ -17,7 +17,7 @@ export class AuthService {
 
   baseUrl: string = "http://localhost:3000/api";
 
-  userData: any; // Save logged in user data
+  userData: any; 
 
   constructor(
     public afs: AngularFirestore,
@@ -56,7 +56,6 @@ export class AuthService {
     });
   }
 
-  // Auth logic to run auth providers
   AuthLogin(provider: any) {
     return this.afAuth
       .signInWithPopup(provider)
@@ -69,7 +68,6 @@ export class AuthService {
       });
   }
 
-  // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       this.router.navigate(['dashboard']);

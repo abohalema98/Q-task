@@ -17,7 +17,7 @@ export class DataviewComponent {
   page = 1;
   pageSize = 4;
   collectionSize = this.items.length;
-  dataViwe!: Users[];
+  dataViwe!: any;
 
   users!: Observable<Users[]>;
   filter = new FormControl('', { nonNullable: true });

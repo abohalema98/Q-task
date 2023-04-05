@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FacebookLoginProvider, SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
@@ -65,7 +65,11 @@ export class SignUpComponent {
 
   // fb 
   async signInWithFB() {
-    await this.SocialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.SocialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
+      this.router.navigate(['/dashboard'])
+    })
+      .catch(err => { console.log(err) })
+
   }
 
   signOut(): void {
