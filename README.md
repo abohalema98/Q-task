@@ -1,27 +1,5 @@
-# QtechTask
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![4778](https://user-images.githubusercontent.com/57066603/230162863-d077d9e2-745e-4a81-be4a-1035dfc9f0d9.PNG)
+<br/>
+![3wqe](https://user-images.githubusercontent.com/57066603/230162868-5a5a9480-ca00-414d-aaa4-a35595ed4143.PNG)
+<br/>
+![qweqwe](https://user-images.githubusercontent.com/57066603/230162874-f2713b79-ca84-4ed4-b15c-d09e5c9c3560.PNG)
